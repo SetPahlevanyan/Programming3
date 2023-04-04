@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming 2</title>
+    <style>
+         .div {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0px 500px;
+    }
+    .button {
+        margin: auto;
+        margin-top: 5vh;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    body {
+        background-color: rgb(200, 120, 85);
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        overflow-x:hidden
+    }
+
+    p {
+        background-color: rgb(215, 255, 255);
+        width: 200px;
+        padding: 10px;
+        border-radius: 30px;
+        text-align: center;
+        border: 1px solid black;
+        user-select: none;      
+    }
+
+    canvas {
+        margin-top: 20vh;
+    }
+    .pink{
+        background-color:pink;
+    }
+    .red{
+        background-color:red;
+        color: aliceblue;
+    }
+    .black{
+        background-color:black;
+        color: aliceblue;
+    }
+    .yell{
+        background-color:yellow;
+
+    }
+    .green{
+        background-color:green;
+        color: aliceblue;
+    }.orange{
+        background-color: orange;
+        color: aliceblue;
+    }
+  
+    </style> 
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+    <script src="grass.js"></script>
+    <script src="grassEater.js"></script>
+    <script src="predator.js"></script>
+    <script src="man.js"></script>
+    <script src="bomb.js"></script>
+    <script src="energyEater.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="div">
+        <div class="button" onclick="Grass()"><p class="green"> Grass</p></div>
+        <div class="button" onclick="Man()"><p class="orange"> Man</p></div>
+        <div class="button" onclick="predator()"><p class="red"> Predator </p></div>
+        <div class="button" onclick="GrassEater()"><p class="yell"> GrassEater</p></div>
+        <div class="button" onclick="Bomb()"><p class="black"> Bomb</p></div>
+        <div class="button" onclick="EnergyEater()"><p class="pink"> EnergyEater</p></div>
+    </div>
+</body>
+</html>

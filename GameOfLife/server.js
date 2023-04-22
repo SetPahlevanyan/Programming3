@@ -1,10 +1,10 @@
 var express= require("express")
  var app=express()
 
- var server = requiere("http").Server(app)
+ var server = require("http").Server(app)
 
- var io=requiere("socket.io")(server)
- var fs = requiere("fs")
+ var io=require("socket.io")(server)
+ var fs = require("fs")
  
  app.use(express.static("."))
 
@@ -135,8 +135,46 @@ function createobject(){
                          
 
 
-            }
+                }
         }
+    
+
+    io.sockets.emit("send matrix",matrix)
+}
+
+
+
+    function game(){
+        for (let i in grassArr) {
+                grassArr[i].mul()
+        }
+
+
+        for(let i in grassEaterArr){
+                grassEaterArr[i].eat()
+        }
+
+     
+
+        for(let i in predatorArr){
+                predatorArr[i].eat()
+        }
+
+        for(let i in manArr){
+                manArr[i].eat()
+        }
+        for(let i in bombArr){
+                bombArr[i].eat()
+        }
+        for(let i in energyEaterArr){
+                energyEaterArr[i].eat()
+        }
+        io.sockets.emit("send matrix",matrix) 
     }
 
-    io.sockets("send matrix",matrix)
+setInterval(game,300)
+
+
+io.on("connection",function(){
+        createobject()
+})

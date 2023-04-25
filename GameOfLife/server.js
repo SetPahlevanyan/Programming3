@@ -1,10 +1,9 @@
 var express= require("express")
  var app=express()
-
  var server = require("http").Server(app)
-
  var io=require("socket.io")(server)
  var fs = require("fs")
+//   const { kill } = require('process');
  
  app.use(express.static("."))
 
@@ -97,13 +96,12 @@ GrassEater = require("./grassEater")
 Predator= require("./predator")
 Man= require("./man")
 Bomb= require("./bomb")
-energyEater= require("./energyEater")
+EnergyEater = require("./energyEater")
 
 //object generation
 
 function createobject(){
        
-    createCanvas(20 * side,20 * side)
     for (let y = 0; y < matrix.length; y++) {
             for (let x = 0; x < matrix[y].length; x++) {
                     if (matrix[y][x] == 1) {
@@ -172,9 +170,53 @@ function createobject(){
         io.sockets.emit("send matrix",matrix) 
     }
 
-setInterval(game,300)
+setInterval(game,500)
 
 
 io.on("connection",function(){
         createobject()
 })
+
+// function Kill() {
+//         grassArr = [];
+//         grassEaterArr = [];
+//         predatorArr= [];
+//         manArr = [];
+//         bombArr = [];
+//         energyEaterArr = [];
+//         for (var y = 0; y < matrix.length; y++) {
+//             for (var x = 0; x < matrix[y].length; x++) {
+//                 matrix[y][x] = 0;
+//             }
+//         }
+//         io.sockets.emit("send matrix", matrix);
+//     }
+
+
+
+
+
+
+
+
+
+// io.on('connection', function (socket) {
+//     createObject();
+//     socket.on("spring", Spring);
+//     socket.on("summer", Summer);
+//     socket.on("autumn", Autumn);
+//     socket.on("winter", Winter);
+//     socket.on("killAll", Kill);
+// })
+
+// var statistics = {};
+// setInterval(function () {
+//     statistics.grass = grassArr.length;
+//     statistics.grassEater = grassEaterArr.length;
+//     statistics.predator = predatorArr.length;
+//     statistics.man = manArr.length;
+//     statistics.bomb = bombarr.length;
+//     statistics.energyEater = energyEaterArr.length;
+//     fs.writeFile("statistics.json", JSON.stringify(statistics), function () {
+//     })
+// }, 1000);
